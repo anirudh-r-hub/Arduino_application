@@ -86,7 +86,8 @@ public class MainActivity extends AppCompatActivity {
                 {
                     myTTS.setLanguage(Locale.US);
                     //speak("Hello! I am ready");
-                    speak("how are you?");
+                    //speak("how are you?");
+                    //speak("kya hai be lund fakir");
                 }
             }
         });
@@ -160,9 +161,8 @@ public class MainActivity extends AppCompatActivity {
         {
             if(command.indexOf("on")!=-1)
             {
-                //speak("My name is Hazel");
                 speak("Turning on the lights");
-                new TaskEsp("192.168.43.208/on").execute(new Void[0]);
+                new TaskEsp("192.168.1.198/on").execute(new Void[0]);
             }
 
             if(command.indexOf("off")!=-1)
@@ -172,8 +172,14 @@ public class MainActivity extends AppCompatActivity {
                         DateUtils.FORMAT_SHOW_TIME);
                 //speak("The time is "+time);
                 speak("Turning off the lights,sir");
-                new TaskEsp("192.168.43.208/off").execute(new Void[0]);
+                //speak(" bandh kartoy saaheb");
+                new TaskEsp("192.168.1.198/off").execute(new Void[0]);
             }
+
+        }
+        else
+        {
+            //speak("seedha bol na chutiya. Kaam ki bhat kar.");
         }
     }
     @Override
@@ -186,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
     private void speak(String message)
     {
         if(Build.VERSION.SDK_INT>=21)
-            myTTS.speak(message,TextToSpeech.QUEUE_FLUSH,null,null);
+            myTTS.speak(message,TextToSpeech.QUEUE_ADD,null,null);
 
 
     }
